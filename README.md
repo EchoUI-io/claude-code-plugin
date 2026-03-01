@@ -5,12 +5,12 @@ Publish HTML pages, images, and static files to live URLs directly from Claude C
 ## Quick Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/echoui/claude-code/master/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/EchoUI-io/claude-code-plugin/master/install.sh | bash
 ```
 
 **Windows:**
 ```powershell
-iwr -useb https://raw.githubusercontent.com/echoui/claude-code/master/install.ps1 | iex
+iwr -useb https://raw.githubusercontent.com/EchoUI-io/claude-code-plugin/master/install.ps1 | iex
 ```
 
 ## Prerequisites
@@ -28,7 +28,7 @@ iwr -useb https://raw.githubusercontent.com/echoui/claude-code/master/install.ps
    ```
 3. Install the plugin:
    ```bash
-   claude plugin add-marketplace https://github.com/echoui/claude-code
+   claude plugin add-marketplace https://github.com/EchoUI-io/claude-code-plugin
    claude plugin install echoui
    ```
 
