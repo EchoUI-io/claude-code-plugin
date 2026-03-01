@@ -8,6 +8,10 @@ A Claude Code plugin that publishes HTML, CSS, JS, SVG, and image files to live 
 echoui/
 ├── .claude-plugin/
 │   └── plugin.json          # Plugin manifest (name, version, skills list)
+├── hooks/
+│   └── hooks.json           # Stop hook for auto-publish
+├── output-styles/
+│   └── echoui-html.md       # HTML output style with auto-publish
 ├── skills/
 │   ├── publish/SKILL.md     # Upload text & binary files to live URLs
 │   ├── list/SKILL.md        # List published files
@@ -16,6 +20,7 @@ echoui/
 └── scripts/
     ├── upload.sh             # Text file upload (HTML, CSS, JS, SVG)
     ├── upload_binary.sh      # Binary file upload via base64 (PNG, JPG, GIF, WebP, ICO)
+    ├── auto-publish.sh       # Stop hook script for output style auto-publish
     ├── list.sh               # GET /api/v1/files (optional prefix filter)
     └── delete.sh             # DELETE /api/v1/files/{path}
 .claude-plugin/
@@ -64,6 +69,23 @@ For example, if the skill base directory is `/home/user/.claude/plugins/cache/ec
 - `echoui:list` — List published files
 - `echoui:delete` — Delete a published file (destructive, cannot be undone)
 - `echoui:preview` — Open a page in the browser
+
+## Output Styles
+
+- `Echo UI HTML` — Formats all Claude Code responses as polished HTML pages, auto-published to Echo UI via Stop hook
+
+### How It Works
+
+1. User activates via `/output-style` → "Echo UI HTML"
+2. Claude formats every response as a complete HTML page with embedded CSS
+3. Claude writes each page to `echoui-output/output-style-response/{session-id}/{timestamp}.html`
+4. The Stop hook (`auto-publish.sh`) detects the new file and uploads it via `upload.sh`
+5. Remote path: `responses/{session-id}/{timestamp}.html`
+
+## Hooks
+
+- `hooks/hooks.json` — Registers the Stop hook (auto-discovered by Claude Code)
+- `scripts/auto-publish.sh` — Finds newest HTML file in `echoui-output/output-style-response/` and uploads it
 
 ## Development Notes
 
