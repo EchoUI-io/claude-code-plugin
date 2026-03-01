@@ -4,7 +4,7 @@ set -euo pipefail
 # Echo UI Claude Code Plugin Installer
 # Usage: curl -fsSL https://raw.githubusercontent.com/echoui/claude-code/master/install.sh | bash
 
-REPO_URL="https://github.com/echoui/claude-code"
+REPO_URL="https://github.com/EchoUI-io/claude-code-plugin"
 ECHOUI_API_URL="${ECHOUI_API_URL:-https://echoui.io}"
 
 echo "=== Echo UI Plugin Installer ==="
@@ -31,7 +31,7 @@ fi
 
 # Validate key
 echo "Validating API key..."
-HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 \
     "${ECHOUI_API_URL}/api/v1/files" \
     -H "Authorization: Bearer ${ECHOUI_API_KEY}" \
     -H "Accept: application/json")
@@ -63,7 +63,7 @@ fi
 
 # Install plugin
 echo "Installing Echo UI plugin..."
-claude plugin add-marketplace "$REPO_URL"
+claude plugin marketplace add "$REPO_URL"
 claude plugin install echoui
 
 echo ""
