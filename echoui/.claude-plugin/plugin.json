@@ -1,0 +1,11 @@
+{
+  "name": "echoui",
+  "description": "Publish files to live Echo UI URLs using the REST API",
+  "version": "1.0.0",
+  "skills": [
+    "skills/publish/SKILL.md",
+    "skills/list/SKILL.md",
+    "skills/delete/SKILL.md",
+    "skills/preview/SKILL.md"
+  ]
+}

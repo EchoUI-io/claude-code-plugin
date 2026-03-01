@@ -1,0 +1,5 @@
+{
+  "name": "Echo UI",
+  "description": "Publish HTML pages, images, and static files to live URLs from Claude Code",
+  "plugins": ["echoui"]
+}
