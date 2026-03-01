@@ -21,7 +21,7 @@ done
 # Prompt for API key
 if [ -z "${ECHOUI_API_KEY:-}" ]; then
     echo "Enter your Echo UI API key (starts with echo_live_):"
-    read -r ECHOUI_API_KEY
+    read -r ECHOUI_API_KEY < /dev/tty
 fi
 
 if [[ ! "$ECHOUI_API_KEY" =~ ^echo_live_ ]]; then
