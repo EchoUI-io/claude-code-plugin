@@ -33,7 +33,7 @@ install.ps1                   # PowerShell installer (Windows)
 
 Skills (SKILL.md) define the workflow and error handling for each operation. They delegate to shell scripts in `scripts/` which wrap `curl` calls to the Echo UI REST API.
 
-**API endpoints** (base: `https://echoui.io` or `ECHOUI_API_URL`):
+**API endpoints** (base: `https://echoui.app` or `ECHOUI_API_URL`):
 - `POST /api/v1/files` — Upload a file (text as JSON content, binary as base64)
 - `GET /api/v1/files` — List files (optional `?prefix=` filter)
 - `DELETE /api/v1/files/{path}` — Delete a file
@@ -44,7 +44,7 @@ Skills (SKILL.md) define the workflow and error handling for each operation. The
 
 - `ECHOUI_API_KEY` env var must be set (starts with `echo_live_`). If missing, tell the user to get one from their Echo UI dashboard at Settings > API Key, then `export ECHOUI_API_KEY=echo_live_...`
 - `curl` and `jq` must be installed
-- Optional: `ECHOUI_API_URL` overrides the default `https://echoui.io`
+- Optional: `ECHOUI_API_URL` overrides the default `https://echoui.app`
 
 ## Resolving Script Paths
 

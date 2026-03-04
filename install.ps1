@@ -4,7 +4,7 @@
 $ErrorActionPreference = "Stop"
 
 $RepoUrl = "https://github.com/echoui/claude-code"
-$EchoUiApiUrl = if ($env:ECHOUI_API_URL) { $env:ECHOUI_API_URL } else { "https://echoui.io" }
+$EchoUiApiUrl = if ($env:ECHOUI_API_URL) { $env:ECHOUI_API_URL } else { "https://echoui.app" }
 
 Write-Host "=== Echo UI Plugin Installer ===" -ForegroundColor Cyan
 Write-Host ""

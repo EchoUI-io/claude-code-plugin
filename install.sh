@@ -5,7 +5,7 @@ set -euo pipefail
 # Usage: curl -fsSL https://raw.githubusercontent.com/echoui/claude-code/master/install.sh | bash
 
 REPO_URL="https://github.com/EchoUI-io/claude-code-plugin"
-ECHOUI_API_URL="${ECHOUI_API_URL:-https://echoui.io}"
+ECHOUI_API_URL="${ECHOUI_API_URL:-https://echoui.app}"
 
 echo "=== Echo UI Plugin Installer ==="
 echo ""

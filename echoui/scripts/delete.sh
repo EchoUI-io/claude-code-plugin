@@ -5,7 +5,7 @@ set -euo pipefail
 # Usage: delete.sh <remote_path>
 
 REMOTE_PATH="${1:?Usage: delete.sh <remote_path>}"
-ECHOUI_API_URL="${ECHOUI_API_URL:-https://echoui.io}"
+ECHOUI_API_URL="${ECHOUI_API_URL:-https://echoui.app}"
 
 if [ -z "${ECHOUI_API_KEY:-}" ]; then
     echo "Error: ECHOUI_API_KEY environment variable is not set" >&2

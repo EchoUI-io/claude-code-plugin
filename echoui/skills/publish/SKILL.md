@@ -46,4 +46,4 @@ bash "<resolved_scripts_dir>/upload_binary.sh" "echoui-output/<remote_path>" "<r
 
 - **401**: API key invalid or expired. Tell user to regenerate it.
 - **422**: Validation error (unsupported extension, invalid path). Check the error message.
-- **curl failure**: Check network. Default API URL is `https://echoui.io` (override with `ECHOUI_API_URL`).
+- **curl failure**: Check network. Default API URL is `https://echoui.app` (override with `ECHOUI_API_URL`).

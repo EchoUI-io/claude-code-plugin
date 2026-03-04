@@ -6,7 +6,7 @@ set -euo pipefail
 
 LOCAL_FILE="${1:?Usage: upload_binary.sh <local_file> <remote_path>}"
 REMOTE_PATH="${2:?Usage: upload_binary.sh <local_file> <remote_path>}"
-ECHOUI_API_URL="${ECHOUI_API_URL:-https://echoui.io}"
+ECHOUI_API_URL="${ECHOUI_API_URL:-https://echoui.app}"
 
 if [ -z "${ECHOUI_API_KEY:-}" ]; then
     echo "Error: ECHOUI_API_KEY environment variable is not set" >&2

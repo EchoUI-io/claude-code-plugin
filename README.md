@@ -16,12 +16,12 @@ iwr -useb https://raw.githubusercontent.com/EchoUI-io/claude-code-plugin/refs/he
 ## Prerequisites
 
 - [Claude Code](https://claude.ai/code) CLI installed
-- An [Echo UI](https://echoui.io) account with an API key
+- An [Echo UI](https://echoui.app) account with an API key
 - `curl` and `jq` installed
 
 ## Manual Install
 
-1. Get your API key from [echoui.io/settings/api-key](https://echoui.io/settings/api-key)
+1. Get your API key from [echoui.app/settings/api-key](https://echoui.app/settings/api-key)
 2. Add to your shell profile:
    ```bash
    export ECHOUI_API_KEY="echo_live_your_key_here"
@@ -59,7 +59,7 @@ iwr -useb https://raw.githubusercontent.com/EchoUI-io/claude-code-plugin/refs/he
 | Variable | Required | Default             | Description |
 |----------|----------|---------------------|-------------|
 | `ECHOUI_API_KEY` | Yes | —                   | Your Echo UI API key (starts with `echo_live_`) |
-| `ECHOUI_API_URL` | No | `https://echoui.io` | Custom API URL (for self-hosted instances) |
+| `ECHOUI_API_URL` | No | `https://echoui.app` | Custom API URL (for self-hosted instances) |
 
 ## License
 

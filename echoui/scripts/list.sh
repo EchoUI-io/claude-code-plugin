@@ -4,7 +4,7 @@ set -euo pipefail
 # List published files on Echo UI
 # Usage: list.sh [prefix]
 
-ECHOUI_API_URL="${ECHOUI_API_URL:-https://echoui.io}"
+ECHOUI_API_URL="${ECHOUI_API_URL:-https://echoui.app}"
 PREFIX="${1:-}"
 
 if [ -z "${ECHOUI_API_KEY:-}" ]; then
