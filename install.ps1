@@ -3,7 +3,7 @@
 
 $ErrorActionPreference = "Stop"
 
-$RepoUrl = "https://github.com/echoui/claude-code"
+$RepoUrl = "https://github.com/EchoUI-io/claude-code-plugin"
 $EchoUiApiUrl = if ($env:ECHOUI_API_URL) { $env:ECHOUI_API_URL } else { "https://echoui.app" }
 
 Write-Host "=== Echo UI Plugin Installer ===" -ForegroundColor Cyan
@@ -87,7 +87,7 @@ if (-not $profileContent -or -not $profileContent.Contains("ECHOUI_API_KEY")) {
 
 # Install plugin
 Write-Host "Installing Echo UI plugin..."
-claude plugin add-marketplace $RepoUrl
+claude plugin marketplace add $RepoUrl
 claude plugin install echoui
 
 Write-Host ""
