@@ -3,18 +3,54 @@
 
 $ErrorActionPreference = "Stop"
 
-$RepoUrl = "https://github.com/echoui/claude-code"
+$RepoUrl = "https://github.com/EchoUI-io/claude-code-plugin"
 $EchoUiApiUrl = if ($env:ECHOUI_API_URL) { $env:ECHOUI_API_URL } else { "https://echoui.app" }
 
 Write-Host "=== Echo UI Plugin Installer ===" -ForegroundColor Cyan
 Write-Host ""
 
 # Check prerequisites
-foreach ($cmd in @("claude", "curl", "jq")) {
+foreach ($cmd in @("claude", "curl")) {
     if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) {
         Write-Error "'$cmd' is required but not installed."
         exit 1
     }
+}
+
+# Auto-install jq if missing
+if (-not (Get-Command "jq" -ErrorAction SilentlyContinue)) {
+    Write-Host "'jq' is not installed. Attempting to install..." -ForegroundColor Yellow
+    $installed = $false
+
+    # Try winget first
+    if (Get-Command "winget" -ErrorAction SilentlyContinue) {
+        Write-Host "Installing jq via winget..."
+        winget install --id jqlang.jq --accept-source-agreements --accept-package-agreements -e
+        # Refresh PATH so jq is found in this session
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+        if (Get-Command "jq" -ErrorAction SilentlyContinue) { $installed = $true }
+    }
+
+    # Try choco
+    if (-not $installed -and (Get-Command "choco" -ErrorAction SilentlyContinue)) {
+        Write-Host "Installing jq via Chocolatey..."
+        choco install jq -y
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+        if (Get-Command "jq" -ErrorAction SilentlyContinue) { $installed = $true }
+    }
+
+    # Try scoop
+    if (-not $installed -and (Get-Command "scoop" -ErrorAction SilentlyContinue)) {
+        Write-Host "Installing jq via Scoop..."
+        scoop install jq
+        if (Get-Command "jq" -ErrorAction SilentlyContinue) { $installed = $true }
+    }
+
+    if (-not $installed) {
+        Write-Error "Could not install 'jq' automatically. Please install it manually: https://jqlang.github.io/jq/download/"
+        exit 1
+    }
+    Write-Host "jq installed successfully." -ForegroundColor Green
 }
 
 # Prompt for API key
@@ -51,7 +87,7 @@ if (-not $profileContent -or -not $profileContent.Contains("ECHOUI_API_KEY")) {
 
 # Install plugin
 Write-Host "Installing Echo UI plugin..."
-claude plugin add-marketplace $RepoUrl
+claude plugin marketplace add $RepoUrl
 claude plugin install echoui
 
 Write-Host ""
