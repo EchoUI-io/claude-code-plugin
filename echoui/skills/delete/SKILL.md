@@ -27,7 +27,7 @@ The skill base directory shown above is `<plugin>/skills/delete`. The delete scr
 bash "<resolved_script_path>" "<remote_path>"
 ```
 
-4. Check the response — `"deleted": true` means success.
+3. Check the response — `"deleted": true` means success.
 
 ## Error Handling
 
