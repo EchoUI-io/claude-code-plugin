@@ -30,7 +30,7 @@ bash "<resolved_script_path>"
 bash "<resolved_script_path>" "reports/"
 ```
 
-3. Present results in a readable format showing path, URL, size, and last updated time.
+2. Present results in a readable format showing path, URL, size, and last updated time.
 
 ## Error Handling
 
